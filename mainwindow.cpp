@@ -92,3 +92,21 @@ void MainWindow::on_Slider_trem2_valueChanged(int value)
     trem2->setVelocidade(value);
 }
 
+
+void MainWindow::on_Slider_trem3_valueChanged(int value)
+{
+    trem3->setVelocidade(value);
+}
+
+
+void MainWindow::on_Slider_trem4_valueChanged(int value)
+{
+    trem4->setVelocidade(value);
+}
+
+
+void MainWindow::on_Slider_trem5_valueChanged(int value)
+{
+    trem5->setVelocidade(value);
+}
+

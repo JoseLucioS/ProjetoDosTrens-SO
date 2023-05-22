@@ -29,6 +29,12 @@ private slots:
 
     void on_Slider_trem2_valueChanged(int value);
 
+    void on_Slider_trem3_valueChanged(int value);
+
+    void on_Slider_trem4_valueChanged(int value);
+
+    void on_Slider_trem5_valueChanged(int value);
+
 private:
     Ui::MainWindow *ui;
 
