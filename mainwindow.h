@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "trem.h"
+#include "auxiliar.h"
 
 namespace Ui {
 class MainWindow;

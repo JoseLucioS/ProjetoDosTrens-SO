@@ -1,5 +1,6 @@
 #include "trem.h"
 #include <QtCore>
+#include "auxiliar.h"
 
 //Construtor
 Trem::Trem(int ID, int x, int y){
