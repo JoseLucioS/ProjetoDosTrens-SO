@@ -14,6 +14,9 @@ MainWindow::MainWindow(QWidget *parent) :
     trem3 = new Trem(3,70,160);
     trem4 = new Trem(4,340,160);
     trem5 = new Trem(5,610,160);
+    for (int i = 0; i < 7; i++) {
+        pthread_mutex_init(&(regioesCriticas[i]), NULL);
+    }
 
     /*
      * Conecta o sinal UPDATEGUI à função UPDATEINTERFACE.
@@ -56,6 +59,9 @@ void MainWindow::updateInterface(int id, int x, int y){
 MainWindow::~MainWindow()
 {
     delete ui;
+    for (int i = 0; i < 7; i++) {
+        pthread_mutex_destroy(&regioesCriticas[i]);
+    }
 }
 
 /*

@@ -151,14 +151,57 @@ void Trem::run(){
         case 4: //Trem 4
             if (getVelocidade() == 200)
                 break;
-            if (y == 160 && x < 610)
+            if (y == 160 && x < 610){
+                if(x == 360){
+                    //regiao critica saida 5
+                    pthread_mutex_unlock(&regioesCriticas[5]);
+                }
+                if(x == 450){
+                    //regiao critica entrada 3
+                    pthread_mutex_lock(&regioesCriticas[3]);
+
+                }
+                if(x == 490){
+                    //regiao critica saida 0
+                    //regiao critica saida 2
+                    pthread_mutex_unlock(&regioesCriticas[0]);
+                    pthread_mutex_unlock(&regioesCriticas[2]);
+                }
+                if(x == 590){
+                    //regiao critica entrada 6
+                    //pthread_mutex_lock(&regioesCriticas[6]);
+                }
                 x+=10;
-            else if (x == 610 && y < 280)
+            }
+
+            else if (x == 610 && y < 280){
+                if(y == 180){
+                    //regiao critica saida 3
+                    pthread_mutex_unlock(&regioesCriticas[3]);
+                }
                 y+=10;
-            else if (x > 340 && y == 280)
+            }
+
+            else if (x > 340 && y == 280){
+                if(x == 590){
+                    //regiao critica saida 6
+                    pthread_mutex_unlock(&regioesCriticas[6]);
+                }
+                if(x == 360){
+                    //regiao critica entrada 5
+                    pthread_mutex_lock(&regioesCriticas[5]);
+                }
                 x-=10;
-            else
+            }
+
+            else{
+                if(y == 180){
+                    //regiao critica entrada 2
+                    pthread_mutex_lock(&regioesCriticas[2]);
+                }
                 y-=10;
+            }
+
             emit updateGUI(ID, x, y);    //Emite um sinal
             break;
         case 5: //Trem 5
