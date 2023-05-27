@@ -207,14 +207,36 @@ void Trem::run(){
         case 5: //Trem 5
             if (getVelocidade() == 200)
                 break;
-            if (y == 160 && x < 880)
+            if (y == 160 && x < 880){
+                if(x == 630){
+                    //regiao critica saida 6
+                    pthread_mutex_unlock(&regioesCriticas[6]);
+                }
+                if(x == 760){
+                    //regiao critica saida 4
+                    pthread_mutex_unlock(&regioesCriticas[4]);
+                }
                 x+=10;
+            }
+
             else if (x == 880 && y < 280)
                 y+=10;
-            else if (x > 610 && y == 280)
+            else if (x > 610 && y == 280){
+                if(x == 630){
+                    //regiao critica entrada 6
+                    pthread_mutex_lock(&regioesCriticas[6]);
+                }
                 x-=10;
-            else
+            }
+
+            else {
+                if(y == 180){
+                    //regiao critica entrada 4
+                    pthread_mutex_lock(&regioesCriticas[4]);
+                }
                 y-=10;
+            }
+
             emit updateGUI(ID, x, y);    //Emite um sinal
             break;
         default:
