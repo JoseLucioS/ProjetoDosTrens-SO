@@ -63,14 +63,51 @@ void Trem::run(){
         case 2: //Trem 2
             if (getVelocidade() == 200)
                 break;
-            if (y == 40 && x <740)
+            if (y == 40 && x <740){
+                if(x == 490){
+                    //regiao critica saida 0
+                    pthread_mutex_unlock(&regioesCriticas[0]);
+                }
+
                 x+=10;
-            else if (x == 740 && y < 160)
+            }
+
+            else if (x == 740 && y < 160){
+                if(y == 140){
+                    //regiao critica entrada 4
+                    //regiao critica entrada 6
+                    pthread_mutex_lock(&regioesCriticas[4]);
+                    pthread_mutex_lock(&regioesCriticas[6]);
+                }
                 y+=10;
-            else if (x > 470 && y == 160)
+            }
+
+            else if (x > 470 && y == 160){
+                if(x == 630){
+                    //regiao critica entrada 3
+                    pthread_mutex_lock(&regioesCriticas[3]);
+                }
+                if(x == 590){
+                    //regiao critica saida 4
+                    //regiao critica saida 6
+                    pthread_mutex_unlock(&regioesCriticas[4]);
+                    pthread_mutex_unlock(&regioesCriticas[6]);
+                }
+                if(x == 490){
+                    //regiao critica entrada 0
+                    pthread_mutex_lock(&regioesCriticas[0]);
+                }
                 x-=10;
-            else
+            }
+
+            else{
+                if(y == 140){
+                    //regiao critica saida 3
+                    pthread_mutex_unlock(&regioesCriticas[3]);
+                }
                 y-=10;
+            }
+
             emit updateGUI(ID, x, y);    //Emite um sinal
             break;
         case 3: //Trem 3
