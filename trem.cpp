@@ -130,9 +130,6 @@ void Trem::run(){
                     //regiao critica saida 1
                     pthread_mutex_unlock(&regioesCriticas[1]);
                 }
-                /*if(y == 260){
-
-                }*/
                 y+=10;
             }
 
