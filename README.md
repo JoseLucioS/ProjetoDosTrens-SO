@@ -7,3 +7,6 @@
 ## Discentes:
 	Jamerson Lucas da Silva
 	Jose Lucio da Silva Junior
+
+## Link para o vídeo no google drive:
+	https://drive.google.com/file/d/1waAUMvAT0yI6rbsUk3iiWSqoDk96pbhV/view?usp=sharing
